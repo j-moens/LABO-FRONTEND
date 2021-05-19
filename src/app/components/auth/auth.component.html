@@ -1,1 +1,42 @@
-<p>auth works!</p>
+<h1>Veuillez vous connecter pour continuer</h1>
+
+<div *ngIf="!isConnected" class="container">
+    <div class="col-sm-8 col-sm-offset2">
+        <form (ngSubmit) ="onSubmit()" [formGroup]="authUserForm">
+
+            <!-- form group email-->
+            <div class="form-group">
+                <label for="email">
+                    Firstname
+                </label>
+                <input type="text" id="email" class="form-control" placeholder="email" [formControl]="authEmailCtl">
+                <small class="text-danger" *ngIf="authEmailCtl.hasError('required')"> require </small>
+                <small class="text-danger" *ngIf="authEmailCtl.hasError('minlength')">
+                minimum length is {{authEmailCtl.errors?.minlength.requiredLength}}</small>
+            </div>
+
+            
+             <!-- form group password -->
+
+            <div class="form-group">
+                <label for="password">
+                   Password
+                </label>
+                <input type="password" id="password" class="form-control" placeholder="password" [formControl]="authPasswordCtl">
+                <small class="text-danger" *ngIf="authPasswordCtl.hasError('required')"> require </small>
+                <small class="text-danger" *ngIf="authPasswordCtl.hasError('minlength')">
+                minimum length is {{authPasswordCtl.errors?.minlength.requiredLength}}</small>
+
+            </div>
+            <button class="btn btn-primary" type="submit" [disabled]="authUserForm.invalid">login</button> 
+
+        </form>
+    </div>
+</div>
+            
+<div *ngIf="isConnected" class="container">
+    <button class="btn btn-primary" (click)="onLogout()"> logout </button>
+           
+    
+</div>
+

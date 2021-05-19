@@ -11,7 +11,7 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class ServerService {
-  private BASE_URL='https://localhost:8000/api/';
+  private BASE_URL='http://localhost:8000/api/';
 
 
  /**
