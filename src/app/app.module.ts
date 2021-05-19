@@ -11,6 +11,10 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { FourhofourComponent } from './components/fourhofour/fourhofour.component';
 import { MainComponent } from './components/main/main.component';
 import { UsersComponent } from './components/users/users.component';
+import { UsersService } from './services/users.service';
+import { ServerService } from './services/server.service';
+import { AuthService } from './services/auth.service';
+import { UsersCommonService } from './services/users-common.service';
 
 
 @NgModule({
@@ -29,7 +33,14 @@ import { UsersComponent } from './components/users/users.component';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    UsersService,
+    ServerService,
+    AuthService,
+    UsersCommonService
+
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
