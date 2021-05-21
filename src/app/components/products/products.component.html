@@ -1,0 +1,27 @@
+<div class="container"> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">reference</th>
+                <th scope="col">name</th>
+                <th scope="col">description</th>
+                <th scope="col">price</th>
+                <th scope="col">fk_model</th>
+            </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let product of productsList">
+             <td>{{product.id}}</td>
+             <td>{{product.reference}}</td>
+             <td>{{product.name}}</td>
+             <td>{{product.description}}</td>
+             <td>{{product.price}}</td>
+             <td>{{product.fk_model}}</td>
+        </tr>
+    </tbody>
+    </table>
+   
+    </div>
+      
+

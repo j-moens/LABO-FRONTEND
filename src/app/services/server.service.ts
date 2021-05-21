@@ -4,6 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import {Observable, of} from 'rxjs';;
 import { catchError, map, flatMap } from 'rxjs/operators';
 import { User } from '../models/user.model';
+import{Product} from '../models/product.model'
 
 
 
@@ -24,11 +25,13 @@ export class ServerService {
 
   public get<T>(url: string, secure: boolean = true): Observable<any> // <T> : permet de passer un type quelconque
   {
+    
     if(secure)
     {
-      return this.call(() =>this.http.get(this.BASE_URL + url));
+      return this.call(() => this.http.get(this.BASE_URL + url));
     } else
     {
+      console.log('else');
       return this.http.get(this.BASE_URL + url);
     }
    
@@ -116,7 +119,9 @@ export class ServerService {
     const token = sessionStorage.getItem('id_token');
     // Si le token n'existe pas ou s'il est expiré ...
     if (!token || this.jwt.isTokenExpired(token)) {
+      
       const user = JSON.parse(sessionStorage.getItem('user') || '');
+     
       return this.http.post<any>(this.BASE_URL + 'token', user).pipe(
         flatMap((data: any) => {
           if(data.success)

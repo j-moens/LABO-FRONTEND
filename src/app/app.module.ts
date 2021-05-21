@@ -11,10 +11,14 @@ import { CreateUserComponent } from './components/create-user/create-user.compon
 import { FourhofourComponent } from './components/fourhofour/fourhofour.component';
 import { MainComponent } from './components/main/main.component';
 import { UsersComponent } from './components/users/users.component';
+import { ProductsComponent } from './components/products/products.component';
+
+
 import { UsersService } from './services/users.service';
 import { ServerService } from './services/server.service';
 import { AuthService } from './services/auth.service';
 import { UsersCommonService } from './services/users-common.service';
+import { ProductsService } from './services/products.service';
 
 
 @NgModule({
@@ -24,7 +28,8 @@ import { UsersCommonService } from './services/users-common.service';
     CreateUserComponent,
     FourhofourComponent,
     MainComponent,
-    UsersComponent
+    UsersComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,8 @@ import { UsersCommonService } from './services/users-common.service';
     UsersService,
     ServerService,
     AuthService,
-    UsersCommonService
+    UsersCommonService,
+    ProductsService
 
 
   ],

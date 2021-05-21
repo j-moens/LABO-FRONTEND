@@ -17,31 +17,31 @@ export class UsersCommonService {
   }
 
 
-public getOneByName(name: string): Observable<User | null>
-{
-  return this.server.get<User>('users-common/name/'+name, false).pipe(
-    map(res => res.length > 0 ? new User(res[0]): null),
-    catchError(err=>
-     {
-       console.error(err);
-       return[];
-     } )
-  );
-}
+  public getOneByName(name: string): Observable<User | null>
+  {
+    return this.server.get<User>('users-common/name/'+name, false).pipe(
+      map(res => res.length > 0 ? new User(res[0]): null),
+      catchError(err=>
+      {
+        console.error(err);
+        return[];
+      } )
+    );
+  }
 
 
-addUsers(user: User):Observable <User[]>
-    {
+  public addUsers(user: User):Observable <User[]>
+  {
 
-  return this.server.post<User>('users/create', user, false).pipe(
-    map(res=> res.map((m: any) =>new User(m))),
-    catchError(err=>
-     {
-       console.error(err);
-       return[];
-     } )
-  );
+    return this.server.post<User>('users-common/create', user, false).pipe(
+      map(res=> res.map((m: any) =>new User(m))),
+      catchError(err=>
+      {
+        console.error(err);
+        return[];
+      } )
+    );
 
-    }
+  }
 
 }
