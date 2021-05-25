@@ -7,7 +7,7 @@
             <!-- form group email-->
             <div class="form-group">
                 <label for="email">
-                    Firstname
+                    Email
                 </label>
                 <input type="text" id="email" class="form-control" placeholder="email" [formControl]="authEmailCtl">
                 <small class="text-danger" *ngIf="authEmailCtl.hasError('required')"> require </small>

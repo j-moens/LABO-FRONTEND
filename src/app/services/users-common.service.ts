@@ -10,12 +10,23 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class UsersCommonService {
-  
+ 
 
   constructor(private server: ServerService) { 
     
   }
 
+  public getOneByID(id: any): Observable<User | null> 
+  {
+    return this.server.get<User>('users/'+ id).pipe(
+      map(res => res.length > 0 ? new User(res[0]) : null),
+      catchError(err => 
+        {
+          console.error(err);
+          return [];
+        })
+    );
+  }
 
   public getOneByName(name: string): Observable<User | null>
   {
@@ -42,6 +53,30 @@ export class UsersCommonService {
       } )
     );
 
+  }
+
+  public updateUser(user: User): Observable<User | null>
+  {
+    return this.server.put<User>('users-common/'+ user.id, user).pipe(
+      map(res => res.length > 0 ? new User(res[0]) : null),
+      catchError(err => 
+        {
+          console.error(err);
+          return [];
+        })
+    );
+  }
+
+  public updatePassword(user: User): Observable<User | null>
+  {
+    return this.server.put<User>('users-common/password', user).pipe(
+      map(res => res.length > 0 ? new User(res[0]) : null),
+      catchError(err => 
+        {
+          console.error(err);
+          return [];
+        })
+    );
   }
 
 }

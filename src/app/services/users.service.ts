@@ -23,7 +23,7 @@ export class UsersService {
         // this.router.navigate(['actors']).then(()=>location.reload());
 
 
-        return this.server.post<User>('myfonetest/users/create/',body).pipe(
+        return this.server.post<User>('users/create/',body).pipe(
           map(res=> res.map((m: any) =>new User(m))),
           catchError(err=>
            {
@@ -40,7 +40,7 @@ export class UsersService {
 
 public getAll(): Observable<User[]>
 {
-  return this.server.get<User[]>('myfonetest/users/').pipe(
+  return this.server.get<User[]>('users').pipe(
     map(res => res.map((m: any) =>new User(m))),
     catchError(err=>
      {
@@ -67,7 +67,7 @@ public getOneById(id: number): Observable<User>
 public updateUser(user: User): Observable<User | null>
 
 {
-  return this.server.put<User>('myfonetest/users/'+user.id, user).pipe(
+  return this.server.put<User>('users/'+user.id, user).pipe(
     map(res => res.length > 0 ? new User(res[0]): null),
     catchError(err=>
      {
@@ -81,7 +81,7 @@ public updateUser(user: User): Observable<User | null>
 public deleteUser(user: User): Observable<User[]>
 
 {
-  return this.server.delete<User>('myfonetest/users/'+user.id).pipe(
+  return this.server.delete<User>('users/'+user.id).pipe(
     map(res => res.map((m: any) =>new User(m))),
     catchError(err=>
      {

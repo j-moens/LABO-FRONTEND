@@ -1,152 +1,28 @@
-<div class="row">
-    <div class="col-sm-8 col-sm-offset2">
-        <form (ngSubmit) ="onSubmit()" [formGroup]="userForm">
-
-            <!-- form group firstname -->
-            <div class="form-group">
-                <label for="firstname">
-                   firstname
-                </label>
-                <input type="text" id="firstname" class="form-control" placeholder="firstname" [formControl]="firstnameCtl">
-                <small class="text-danger" *ngIf="firstnameCtl.hasError('required')"> require </small>
-                <small class="text-danger" *ngIf="firstnameCtl.hasError('firstnameExist')"> firstname already exist </small>
-                <small class="text-danger" *ngIf="firstnameCtl.hasError('minlength')">
-                minimum length is {{firstnameCtl.errors?.minlength.requiredLength}}</small>
+<form id="actorForm" class="form" [formGroup]="userForm" novalidate>
+    <mat-tab-group mat-stretch-tabs dynamicHeight>
+        <mat-tab label="General Data">
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="email" class="form-control" placeholder="email" 
+                        [formControl]="emailCtl">
+                    <mat-error class="field-error" *ngIf="emailCtl.hasError('required')"> required </mat-error>
+                    <mat-error class="field-error" *ngIf="emailCtl.hasError('usernameExist')"> User already exist </mat-error>
+                </mat-form-field>
             </div>
-
-               <!-- form group lastname -->
-               <div class="form-group">
-                <label for="lastname">
-                    lastname
-                </label>
-                <input type="text" id="lastname" class="form-control" placeholder="lastname" [formControl]="lastnameCtl">
-                <small class="text-danger" *ngIf="lastnameCtl.hasError('required')"> require </small>
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="email" class="form-control" placeholder="email" 
+                        [formControl]="emailCtl">
+                    <mat-error class="field-error" *ngIf="emailCtl.hasError('required')"> required </mat-error>
+                </mat-form-field>
             </div>
-
-            
-
-             <!-- form group email -->
-            <div class="form-group">
-                <label for="email">
-                   Email
-                </label>
-                <input type="text" id="email" class="form-control" placeholder="email" [formControl]="emailCtl">
-                <small class="text-danger" *ngIf="emailCtl.hasError('required')"> require </small>
-                <small class="text-danger" *ngIf="emailCtl.hasError('minlength')">
-                minimum length is {{emailCtl.errors?.minlength.requiredLength}}</small>
-                <small class="text-danger" *ngIf="emailCtl.hasError('email')">
-                   Should be a valid email adress</small>
+            <div class="form">
+                <mat-slide-toggle color="primary" [formControl]="adminCtl">admin</mat-slide-toggle>
             </div>
-
-                  <!-- form group number_street -->
-                  <div class="form-group">
-                    <label for="number_street">
-                        number_street
-                    </label>
-                    <input type="text" id="number_street" class="form-control" placeholder="number_street" [formControl]="number_streetCtl">
-                </div>
-
-                    <!-- form group street -->
-                <div class="form-group">
-                    <label for="street">
-                        street
-                    </label>
-                    <input type="text" id="street" class="form-control" placeholder="street" [formControl]="streetCtl">
-                    <small class="text-danger" *ngIf="firstnameCtl.hasError('required')"> require </small>
-                        </div>
-    
-            <!-- form group zipcode -->
-            <div class="form-group">
-                <label for="zipcode">
-                    zipcode
-                </label>
-                <input type="text" id="zipcode" class="form-control" placeholder="zipcode" [formControl]="zipcodeCtl">
-                <small class="text-danger" *ngIf="firstnameCtl.hasError('required')"> require </small>
-                    </div>
-
-               <!-- form group city -->
-               <div class="form-group">
-                <label for="city">
-                    city 
-                </label>
-                <input type="text" id="city" class="form-control" placeholder="city" [formControl]="cityCtl">
-                <small class="text-danger" *ngIf="firstnameCtl.hasError('required')"> require </small>
-                    </div>
-
-                <!-- form group country-->
-               <div class="form-group">
-                <label for="country">
-                    country 
-                </label>
-                <input type="text" id="country" class="form-control" placeholder="country" [formControl]="countryCtl">
-                <small class="text-danger" *ngIf="firstnameCtl.hasError('required')"> require </small>
-                    </div>
-
-              <!-- form group extra_info-->
-              <div class="form-group">
-                <label for="extra_info">
-                    extra_info
-                </label>
-                <input type="text" id="extra_info" class="form-control" placeholder="extra_info" [formControl]="extra_infoCtl">
-                    </div>
-
-            <!-- form group gender-->
-            <div class="form-group">
-                <label for="gender">
-                    gender
-                </label>
-                <input type="text" id="gender" class="form-control" placeholder="gender" [formControl]="genderCtl">
-                <small class="text-danger" *ngIf="firstnameCtl.hasError('required')"> require </small>
-                    </div>
-
-            <!-- form group phone_number-->
-            <div class="form-group">
-                <label for="phone_number">
-                    phone_number
-                </label>
-                <input type="text" id="phone_number" class="form-control" placeholder="phone_number" [formControl]="phone_numberCtl">
-                <small class="text-danger" *ngIf="phone_numberCtl.hasError('required')"> require </small>
-                    </div>
-            
-             <!-- à rajouter : birth_date -->
-
-
-
-             <!-- form group password -->
-
-            <div class="form-group">
-                <label for="password">
-                   Password
-                </label>
-                <input type="text" id="password" class="form-control" placeholder="password" [formControl]="passwordCtl">
-                <small class="text-danger" *ngIf="passwordCtl.hasError('required')"> require </small>
-                <small class="text-danger" *ngIf="passwordCtl.hasError('minlength')">
-                minimum length is {{passwordCtl.errors?.minlength.requiredLength}}</small>
-
-                <small class="text-danger" *ngIf="passwordCtl.hasError('pwdAndUsernameEqual')">password is equal to firstname! </small>
-                <small class="text-danger" *ngIf="passwordCtl.hasError('pwdMustContainNbr')">password must contains numbers </small>
-                <small class="text-danger" *ngIf="passwordCtl.hasError('pwdRegEx')">password must contain at least one letter, one number,... </small>
-
-            </div>
-
-           <!-- form group confirm password -->
-
-           <div class="form-group">
-            <label for="confirm-password">
-               Password Confirmation
-            </label>
-            <input type="text" id="password" class="form-control" placeholder="password" [formControl]="confirmPasswordCtl">
-            <small class="text-danger" *ngIf="confirmPasswordCtl.hasError('pwdNotEqual')">passwords are not equals</small>
-            
-
-        </div>
-
-
-            
-            
-            <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid">save</button> 
-
-            </form>
+        </mat-tab>
+    </mat-tab-group>    
+    <div class="footer">
+        <button type="submit" form="actorForm" class="btn btn-primary mr-2" [disabled]="userForm.invalid"
+        (click)="update()">save</button>
     </div>
-</div>
-
+</form>

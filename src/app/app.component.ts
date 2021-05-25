@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from './services/auth.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { AuthService } from './services/auth.service';
 export class AppComponent {
   title = 'Home';
 
-  constructor(private authService: AuthService)
+  constructor(private authService: AuthService, private router: Router)
   {
   }
 
@@ -21,6 +22,12 @@ export class AppComponent {
   public logout(): void
   {
     this.authService.logout();
+  }
+
+  public profile(): void 
+  {
+    const profileRte = 'users/' + this.authService.getCurrentUser().id;
+    this.router.navigate([profileRte]);
   }
 
 }

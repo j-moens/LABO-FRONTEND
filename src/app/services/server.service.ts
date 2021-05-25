@@ -83,6 +83,7 @@ export class ServerService {
         {
           const token = data.token;
           user.admin  = data.admin;
+          user.id = data.id;
           sessionStorage.setItem('user', JSON.stringify(user));
           sessionStorage.setItem('id_token', token);
           console.log("TOKEN_RENEWED");
