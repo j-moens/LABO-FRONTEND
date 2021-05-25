@@ -4,7 +4,7 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 import {Observable, of} from 'rxjs';;
 import { catchError, map, flatMap } from 'rxjs/operators';
 import { User } from '../models/user.model';
-import{Product} from '../models/product.model'
+
 
 
 
