@@ -1,2 +1,32 @@
 <p>users works!</p>
 
+<div class="container"> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">firstname</th>
+                <th scope="col">email</th>
+            </tr>
+        </thead>
+        <tbody>
+         <tr *ngFor="let user of usersList">
+             <td>{{user.id}}</td>
+             <td>{{user.firstname}}</td>
+             <td>{{user.email}}</td>
+             <td>
+                
+                <button type="button" class="btn btn-info">Infos</button>
+                 <button type="button" class="btn btn-primary" (click)="edit(user.id)">Edit</button>
+                 <button type="button" class="btn btn-danger"(click)="delete(user)">Delete</button>
+               
+
+                
+                </td>
+        </tr>
+    </tbody>
+    </table>
+   
+    </div>
+      
+            
