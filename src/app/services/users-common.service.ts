@@ -18,7 +18,7 @@ export class UsersCommonService {
 
   public getOneByID(id: any): Observable<User | null> 
   {
-    return this.server.get<User>('users/'+ id).pipe(
+    return this.server.get<User>('users-common/id/'+ id).pipe(
       map(res => res.length > 0 ? new User(res[0]) : null),
       catchError(err => 
         {

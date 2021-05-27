@@ -1,0 +1,125 @@
+<form id="userForm" class="form" [formGroup]="userForm" novalidate>
+    <mat-tab-group mat-stretch-tabs dynamicHeight>
+        <mat-tab label="General Data">
+
+            <!-- edit profil  -->
+
+            <!--edit email-->
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="email" class="form-control" placeholder="email" 
+                        [formControl]="emailCtl">
+                    <mat-error class="field-error" *ngIf="emailCtl.hasError('required')"> required </mat-error>
+                    <mat-error class="field-error" *ngIf="emailCtl.hasError('emailExist')"> Email already exist </mat-error>
+                </mat-form-field>
+            </div>
+
+            <!--edit first name-->
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="firstname" class="form-control" placeholder="firstname" 
+                        [formControl]="firstnameCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit lastname-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="lastname" class="form-control" placeholder="lastname" 
+                        [formControl]="lastnameCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit gender-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="gender" class="form-control" placeholder="gender" 
+                        [formControl]="genderCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit phone_number-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="phone_number" class="form-control" placeholder="phone number" 
+                        [formControl]="phone_numberCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit street-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="street" class="form-control" placeholder="street" 
+                        [formControl]="streetCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit number_street-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="number_street" class="form-control" placeholder="number street" 
+                        [formControl]="number_streetCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit zipcode-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="zipcode" class="form-control" placeholder="zipcode" 
+                        [formControl]="zipcodeCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit city-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="city" class="form-control" placeholder="city" 
+                        [formControl]="cityCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit country-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="country" class="form-control" placeholder="country" 
+                        [formControl]="countryCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!--edit extra_info-->
+
+            <div class="form">
+                <mat-form-field>
+                    <input matInput type="text" id="extra_info" class="form-control" placeholder="extra_info" 
+                        [formControl]="extra_infoCtl">
+                   
+                </mat-form-field>
+            </div>
+
+            <!-- <div class="form">
+                <mat-slide-toggle color="primary" [formControl]="adminCtl">admin</mat-slide-toggle>
+            </div> -->
+        </mat-tab>
+    </mat-tab-group>    
+    <div class="footer">
+        <button type="submit" form="userForm" class="btn btn-primary mr-2" [disabled]="userForm.invalid"
+        (click)="update()">save</button>
+    </div>
+</form>

@@ -1,28 +1,128 @@
-<form id="actorForm" class="form" [formGroup]="userForm" novalidate>
-    <mat-tab-group mat-stretch-tabs dynamicHeight>
-        <mat-tab label="General Data">
-            <div class="form">
-                <mat-form-field>
-                    <input matInput type="text" id="email" class="form-control" placeholder="email" 
-                        [formControl]="emailCtl">
-                    <mat-error class="field-error" *ngIf="emailCtl.hasError('required')"> required </mat-error>
-                    <mat-error class="field-error" *ngIf="emailCtl.hasError('usernameExist')"> User already exist </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="form">
-                <mat-form-field>
-                    <input matInput type="text" id="email" class="form-control" placeholder="email" 
-                        [formControl]="emailCtl">
-                    <mat-error class="field-error" *ngIf="emailCtl.hasError('required')"> required </mat-error>
-                </mat-form-field>
-            </div>
-            <div class="form">
-                <mat-slide-toggle color="primary" [formControl]="adminCtl">admin</mat-slide-toggle>
-            </div>
-        </mat-tab>
-    </mat-tab-group>    
-    <div class="footer">
-        <button type="submit" form="actorForm" class="btn btn-primary mr-2" [disabled]="userForm.invalid"
-        (click)="update()">save</button>
+<div class="container">
+    <div class="col-sm-8 col-sm-offset2">
+    <form (ngSubmit)="onSubmit()" [formGroup]="userForm">
+        <mat-tab-group mat-stretch-tabs dynamicHeight>
+            <mat-tab label="Create User">
+                <div class="pl-2">
+
+
+                    <!--Create email -->
+                    <div class="form">
+                        <mat-form-field align="center">
+                            <input matInput type="text" class="form-control" placeholder="email" [formControl]="emailCtl">
+                            <mat-error class="text-danger" *ngIf="emailCtl.hasError('required')"> required </mat-error>
+                            <mat-error class="text-danger" *ngIf="emailCtl.hasError('emailExist')"> email exist </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--Create password -->
+
+                    <div class="form">
+                        <mat-form-field>
+                            <input matInput type="password" class="form-control" placeholder="password" [formControl]="passwordCtl">
+                            <mat-error class="text-danger" *ngIf="passwordCtl.hasError('required')"> require </mat-error>
+                            <mat-error class="text-danger" *ngIf="passwordCtl.hasError('pwdAndUsernameEqual')"> password is equal to username! </mat-error>
+                            <mat-error class="text-danger" *ngIf="passwordCtl.hasError('pwdMustContainNbr')"> password must contains numbers! </mat-error>
+                            <mat-error class="text-danger" *ngIf="passwordCtl.hasError('pwdRegEx')"> Password must contain at least one letter, one number, ... </mat-error>
+                        </mat-form-field>
+                        <mat-form-field>
+                            <input matInput type="password" class="form-control" placeholder="password confirm" [formControl]="passwordConfirmCtl">
+                            <mat-error class="text-danger" *ngIf="passwordConfirmCtl.hasError('pwdNotEqual')"> passwords are not equals </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <!--create firstname-->
+                    <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="firstname" [formControl]="firstnameCtl">
+                            <mat-error class="text-danger" *ngIf="firstnameCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                     <!--create lastname-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="lastname" [formControl]="lastnameCtl">
+                            <mat-error class="text-danger" *ngIf="lastnameCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+                     <!--create gender-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="gender" [formControl]="genderCtl">
+                            <mat-error class="text-danger" *ngIf="genderCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                     <!--create phone_number-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="phone_number" [formControl]="phone_numberCtl">
+                            <mat-error class="text-danger" *ngIf="phone_numberCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                     <!--create street-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="street" [formControl]="streetCtl">
+                            <mat-error class="text-danger" *ngIf="genderCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                     <!--create number_street-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="number_street" [formControl]="number_streetCtl">
+                        </mat-form-field>
+                    </div>
+
+                     <!--create zipcode-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="zipcode" [formControl]="zipcodeCtl">
+                            <mat-error class="text-danger" *ngIf="zipcodeCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                     <!--create city-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="city" [formControl]="cityCtl">
+                            <mat-error class="text-danger" *ngIf="cityCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                     <!--create country-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="country" [formControl]="countryCtl">
+                            <mat-error class="text-danger" *ngIf="countryCtl.hasError('required')"> required </mat-error>
+                        </mat-form-field>
+                    </div>
+
+                     <!--create extra_info-->
+
+                     <div class="form">
+                        <mat-form-field>
+                            <input matInput type="text" class="form-control" placeholder="extra_info" [formControl]="extra_infoCtl">
+                        </mat-form-field>
+                    </div>
+
+                   
+                </div>
+            </mat-tab>
+        </mat-tab-group>
+    </form>
+    <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid"
+    (click)="onSubmit()">save</button>
     </div>
-</form>
+    </div>

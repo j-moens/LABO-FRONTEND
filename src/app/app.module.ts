@@ -64,6 +64,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 
 
 export function tokenGetter() {
@@ -81,6 +82,7 @@ export function tokenGetter() {
     UsersComponent,
     ProductsComponent,
     ChangePasswordComponent,
+    EditUserComponent,
   ],
   imports: [
     BrowserModule,

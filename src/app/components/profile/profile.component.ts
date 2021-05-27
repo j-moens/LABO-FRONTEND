@@ -4,9 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { User } from 'src/app/models/user.model';
 import { UsersCommonService } from 'src/app/services/users-common.service';
-import { CreateUserComponent} from 'src/app/components/create-user/create-user.component';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChangePasswordComponent } from '../change-password/change-password.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-profile',
@@ -38,7 +38,7 @@ export class ProfileComponent implements OnInit {
 
   editProfile()
   {
-    const dlg = this.dialog.open(CreateUserComponent, { data: this.user });
+    const dlg = this.dialog.open(EditUserComponent, { data: this.user });
     dlg.beforeClosed().subscribe(res => 
       {
         if(res)

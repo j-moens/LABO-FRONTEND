@@ -67,7 +67,7 @@ public getOneById(id: number): Observable<User>
 public updateUser(user: User): Observable<User | null>
 
 {
-  return this.server.put<User>('users/'+user.id, user).pipe(
+  return this.server.put<User>('myfonetest/users/'+user.id, user).pipe(
     map(res => res.length > 0 ? new User(res[0]): null),
     catchError(err=>
      {

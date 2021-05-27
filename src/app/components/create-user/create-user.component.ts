@@ -1,11 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {User} from'../../models/user.model';
-import{FormBuilder, FormControl, FormGroup, NgForm, ValidatorFn, Validators, AbstractControl} from '@angular/forms';
-import{ActivatedRoute, Router} from '@angular/router';
-import { UsersService } from '../../services/users.service';
-import { UsersCommonService } from 'src/app/services/users-common.service';
+import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl, ValidatorFn } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UsersCommonService } from 'src/app/services/users-common.service';
+import { UsersService } from '../../services/users.service';
+
 
 @Component({
   selector: 'app-create-user',
@@ -26,30 +26,48 @@ export class CreateUserComponent implements OnInit {
   extra_infoCtl!:FormControl;
   genderCtl!:FormControl;
   emailCtl!: FormControl;
-  passwordCtl!: FormControl;
-  confirmPasswordCtl!: FormControl;
   phone_numberCtl!: FormControl;
   adminCtl!: FormControl;
   isNew: boolean = true;
   user!:User;
+  passwordCtl!: FormControl;
+  passwordConfirmCtl!: FormControl;
   
   
-  constructor(public dialogRef: MatDialogRef<CreateUserComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: User, 
-    private formBuilder: FormBuilder, 
-    private usersCommonService: UsersCommonService) 
-{
-  this.initForm();
-}
+  constructor(private userService: UsersService, 
+    private usersCommonService: UsersCommonService, 
+    private router: Router, 
+    private route: ActivatedRoute, 
+    private formBuilder: FormBuilder,
+    private authService: AuthService)   {
+    this.initForm();
+  }
+
+  ngOnInit(): void {
+    if(this.route.snapshot.params["id"])
+    {
+      this.userService.getOneById(this.route.snapshot.params["id"]).subscribe(m => 
+        {
+          if(m)
+          {   
+            this.isNew = false;
+            this.user = m;
+            this.userForm.patchValue(this.user);
+          }
+        });
+    }
+  }
   
 initForm(): void
 {
-  this.emailCtl = this.formBuilder.control ('', [Validators.required, Validators.email, Validators.minLength(7)], this.emailExist); 
-    this.firstnameCtl = this.formBuilder.control ('', [Validators.required, Validators.minLength(3)]);
+  this.emailCtl = this.formBuilder.control ('', [Validators.required], [this.emailExist()]); 
 
-    
+    this.passwordCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(6), this.checkPassword()]);
+    this.passwordConfirmCtl = this.formBuilder.control('', [Validators.required, this.checkConfirm()]);
+
+    this.firstnameCtl = this.formBuilder.control ('', [Validators.required, Validators.minLength(1)]);
     this.lastnameCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
-    this.number_streetCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
+    this.number_streetCtl = this.formBuilder.control('');
     this.streetCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
     this.zipcodeCtl = this.formBuilder.control('', [Validators.required,  Validators.minLength(1)]);
     this.cityCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
@@ -72,11 +90,10 @@ initForm(): void
       extra_info: this.extra_infoCtl,
       gender: this.genderCtl,
       phone_number: this.phone_numberCtl,
-
-
+      
       password: this.passwordCtl,
-     
-      confirmPassword : this.confirmPasswordCtl,
+      passwordConfirm: this.passwordConfirmCtl,
+
 
       admin: this.adminCtl
      
@@ -85,19 +102,6 @@ initForm(): void
 
 }
 
-    ngOnInit(): void {
-
-    }
-  
-    
-    update()
-    {
-      const data = this.userForm.value;
-      this.dialogRef.close(data);
-    }
-  
-
-    
     emailExist(): any
     {
       var timeout: any;
@@ -121,7 +125,62 @@ initForm(): void
         });
       }
     }
-  
+
     
+  checkPassword(): ValidatorFn
+  {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const password = control.value;
+      
+      let hasNumber = /\d/;
+      let hasErrors = false;
+      let errors = {forbidden: {value: 'passwords and user name are equal'}, pwdAndUsernameEqual: false, pwdMustContainNbr: false, 
+        pwdRegEx: false };
+      var pattern = new RegExp(
+        "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[-+_!@#$%^&*.,?]).+$"
+      );
+
+      if(password === this.emailCtl.value && (!control.hasError('required')))
+      {
+        hasErrors = true;
+        errors.pwdAndUsernameEqual = true;
+      } else if(!hasNumber.test(password))
+      {
+        hasErrors = true;
+        errors.pwdMustContainNbr = true; 
+      } else if(!pattern.test(password))
+      {
+        hasErrors = true;
+        errors.pwdRegEx = true;
+      }
+      return hasErrors ? errors : null;
+    };
+  }
+
+  checkConfirm(): ValidatorFn
+  {
+    return (control: AbstractControl): {[key: string]: any} | null => {
+      const password = control.value;
+
+      if(password != this.passwordCtl.value && (!control.hasError('required')))
+      {
+        return  {forbidden: {value: 'passwords are not the same'}, pwdNotEqual: true };
+      }
+      return null;
+    };
+  }
+
+  onSubmit()
+  {
+    const formVal = this.userForm.value;
+    formVal.id = 0;
+    const newUser = new User(formVal);
+    this.usersCommonService.addUsers(newUser).subscribe(m => {});
+    
+    //this.router.navigate(['/users']);
+  }
+
+
+
   
 }

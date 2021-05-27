@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { UsersCommonService } from 'src/app/services/users-common.service';
 import { UsersService } from '../../services/users.service';
 import { CreateUserComponent } from '../create-user/create-user.component';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 
 @Component({
   selector: 'app-mat-users',
@@ -17,7 +18,7 @@ import { CreateUserComponent } from '../create-user/create-user.component';
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'email', 'admin', 'actions'];
+  displayedColumns: string[] = ['id', 'email', 'firstname', 'lastname', 'admin', 'actions', 'birth date','phone number', 'street', 'number street', 'zipcode', 'city', 'country', 'extra info'];
   dataSource!: MatTableDataSource<User>;
   public usersList!: User[];
 
@@ -53,7 +54,7 @@ export class UsersComponent implements OnInit {
 
   edit(user: User): void
   {
-    const dlg = this.dialog.open(CreateUserComponent, { data: user });
+    const dlg = this.dialog.open(EditUserComponent, { data: user });
     dlg.beforeClosed().subscribe(res => 
       {
         if(res)
