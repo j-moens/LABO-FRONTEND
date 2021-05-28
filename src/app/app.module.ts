@@ -18,7 +18,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
 import { MatMenuModule } from "@angular/material/menu";
-// import {  MatNativeDateModule} from "@angular/material";
+
 import { MatPaginatorModule } from "@angular/material/paginator";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
@@ -33,6 +33,7 @@ import { MatSortModule } from "@angular/material/sort";
 import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatStepperModule } from "@angular/material/stepper";
+
 
 
 //
@@ -66,6 +67,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { MatNativeDateModule } from "@angular/material/core";
 
 
 export function tokenGetter() {
@@ -95,7 +97,7 @@ export function tokenGetter() {
        MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatListModule,
        MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule,
        MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatRadioModule,
-       MatTabsModule,
+       MatTabsModule,MatDatepickerModule, MatNativeDateModule,
        //
     JwtModule.forRoot({
       config: {
@@ -114,7 +116,8 @@ export function tokenGetter() {
     UsersCommonService,
     ProductsService,
     AuthGuard,
-    AdminGuard
+    AdminGuard, 
+    MatDatepickerModule,
 
 
   ],

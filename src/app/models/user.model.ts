@@ -33,7 +33,7 @@ export class User
         this.country = data.country;
         this.extra_info = data.extra_info;
         this.gender = data.gender;
-        this.birth_date = data.birth_date;
+        this.birth_date = new Date (data.birth_date);
         this.phone_number = data.phone_number;
 
         this.admin = data.admin;

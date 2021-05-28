@@ -37,9 +37,11 @@
 
              <div class="form">
                 <mat-form-field>
-                    <input matInput type="date" id="birth_date" class="form-control" placeholder="tell me your birthdate" 
-                        [formControl]="birth_dateCtl">
-                   
+                    <input matInput [matDatepicker]="picker" id="birth_date" class="form-control" placeholder="tell me your birthdate" 
+                    [formControl]="birth_dateCtl"> 
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                       
                 </mat-form-field>
             </div>
 
@@ -126,9 +128,9 @@
                 </mat-form-field>
             </div>
 
-            <!-- <div class="form">
-                <mat-slide-toggle color="primary" [formControl]="adminCtl">admin</mat-slide-toggle>
-            </div> -->
+            <div class="form">
+                <mat-checkbox *ngIf = "isAdmin" class="example-margin" class="form-control" [formControl]="adminCtl" id="admin">Admin</mat-checkbox>
+            </div> 
         </mat-tab>
     </mat-tab-group>    
     <div class="footer">
