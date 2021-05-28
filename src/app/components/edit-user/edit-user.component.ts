@@ -22,7 +22,9 @@ export class EditUserComponent implements OnInit {
   cityCtl!:FormControl;
   countryCtl!:FormControl;
   extra_infoCtl!:FormControl;
+
   genderCtl!:FormControl;
+
   emailCtl!: FormControl;
   phone_numberCtl!: FormControl;
   adminCtl!: FormControl;
@@ -45,7 +47,7 @@ initForm(): void
     this.firstnameCtl = this.formBuilder.control ('');
     this.lastnameCtl = this.formBuilder.control('');
     this.birth_dateCtl = this.formBuilder.control('');
-    this.genderCtl = this.formBuilder.control('');
+    this.genderCtl = this.formBuilder.control(["H", "F", "X"]);
     this.phone_numberCtl = this.formBuilder.control('');
     this.streetCtl = this.formBuilder.control('');
     this.number_streetCtl = this.formBuilder.control('');
@@ -80,7 +82,7 @@ initForm(): void
      
      
     });
-    this.userForm.patchValue(this.data);
+    this.userForm.patchValue(this.data); // le patchValue permet de pré-remplir le formulaire d'edit avec les infos déjà existantes du user
 
 }
 
@@ -91,7 +93,7 @@ initForm(): void
     
     update()
     {
-      const data = this.userForm.value;
+      const data = this.userForm.value; 
       this.dialogRef.close(data);
     }
   

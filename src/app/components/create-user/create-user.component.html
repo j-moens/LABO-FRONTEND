@@ -47,15 +47,28 @@
                             <mat-error class="text-danger" *ngIf="lastnameCtl.hasError('required')"> required </mat-error>
                         </mat-form-field>
                     </div>
+
+                        <!--create birth_date-->
+
+                        <div class="form">
+                            <mat-form-field>
+                                <input matInput type="date" class="form-control" placeholder="give me youyr birthdate" [formControl]="birth_dateCtl">
+                                <mat-error class="text-danger" *ngIf="birth_dateCtl.hasError('required')"> required </mat-error>
+                            </mat-form-field>
+                        </div>
+
+
                      <!--create gender-->
-
                      <div class="form">
-                        <mat-form-field>
-                            <input matInput type="text" class="form-control" placeholder="gender" [formControl]="genderCtl">
-                            <mat-error class="text-danger" *ngIf="genderCtl.hasError('required')"> required </mat-error>
-                        </mat-form-field>
-                    </div>
+                        <mat-radio-group name="gender" class="form-control" [formControl]="genderCtl">
+                            <mat-radio-button value="H">Homme</mat-radio-button>
+                            <mat-radio-button value="F">Femme</mat-radio-button>
+                            <mat-radio-button value="X">X</mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+        
 
+                    
                      <!--create phone_number-->
 
                      <div class="form">

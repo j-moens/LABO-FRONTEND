@@ -5,6 +5,7 @@ import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { UsersCommonService } from 'src/app/services/users-common.service';
 import { UsersService } from '../../services/users.service';
+import { MatRadioModule } from "@angular/material/radio";
 
 
 @Component({
@@ -18,13 +19,14 @@ export class CreateUserComponent implements OnInit {
   userForm!: FormGroup;
   firstnameCtl!: FormControl;
   lastnameCtl!:FormControl;
+  birth_dateCtl!: FormControl;
   number_streetCtl!:FormControl;
   streetCtl!:FormControl;
   zipcodeCtl!:FormControl;
   cityCtl!:FormControl;
   countryCtl!:FormControl;
   extra_infoCtl!:FormControl;
-  genderCtl!:FormControl;
+  genderCtl!: FormControl;
   emailCtl!: FormControl;
   phone_numberCtl!: FormControl;
   adminCtl!: FormControl;
@@ -67,13 +69,14 @@ initForm(): void
 
     this.firstnameCtl = this.formBuilder.control ('', [Validators.required, Validators.minLength(1)]);
     this.lastnameCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
+    this.birth_dateCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
     this.number_streetCtl = this.formBuilder.control('');
     this.streetCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
     this.zipcodeCtl = this.formBuilder.control('', [Validators.required,  Validators.minLength(1)]);
     this.cityCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
     this.countryCtl = this.formBuilder.control('', [Validators.required,  Validators.minLength(1)]);
     this.extra_infoCtl = this.formBuilder.control('');
-    this.genderCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
+    this.genderCtl = this.formBuilder.control(["H", "F", "X"]);
     this.phone_numberCtl = this.formBuilder.control('', [Validators.required, Validators.minLength(1)]);
     this.adminCtl = this.formBuilder.control(false);
 
@@ -81,6 +84,7 @@ initForm(): void
     this.userForm = this.formBuilder.group({
       firstname: this.firstnameCtl,
       lastname: this.lastnameCtl,
+      birth_date: this.birth_dateCtl,
       email: this.emailCtl,
       number_street: this.number_streetCtl,
       street: this.streetCtl,
@@ -178,8 +182,7 @@ initForm(): void
     this.usersCommonService.addUsers(newUser).subscribe(m => {});
     this.authService.login (newUser).subscribe(m=>
       {
-        console.log(newUser);
-        this.router.navigate(['/users/'+this.authService.getCurrentUser().id]);// on se logue auto
+        this.router.navigate(['/users/'+this.authService.getCurrentUser().id]);// on se logue automatiquement après la création d'un user
 
       }); 
   }

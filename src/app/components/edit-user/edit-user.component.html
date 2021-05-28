@@ -48,12 +48,13 @@
             <!--edit gender-->
 
             <div class="form">
-                <mat-form-field>
-                    <input matInput type="text" id="gender" class="form-control" placeholder="gender" 
-                        [formControl]="genderCtl">
-                   
-                </mat-form-field>
-            </div>
+                <mat-radio-group name="gender" class="form-control" [formControl]="genderCtl">
+                    <mat-radio-button value="H">Homme</mat-radio-button>
+                    <mat-radio-button value="F">Femme</mat-radio-button>
+                    <mat-radio-button value="X">X</mat-radio-button>
+                </mat-radio-group>
+              </div>
+
 
             <!--edit phone_number-->
 
