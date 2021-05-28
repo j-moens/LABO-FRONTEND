@@ -176,8 +176,12 @@ initForm(): void
     formVal.id = 0;
     const newUser = new User(formVal);
     this.usersCommonService.addUsers(newUser).subscribe(m => {});
-    
-    //this.router.navigate(['/users']);
+    this.authService.login (newUser).subscribe(m=>
+      {
+        console.log(newUser);
+        this.router.navigate(['/users/'+this.authService.getCurrentUser().id]);// on se logue auto
+
+      }); 
   }
 
 

@@ -3,6 +3,20 @@
         <div class="mat-elevation-z2">
             <table mat-table [dataSource]="dataSource" matSort matSortActive="id" matSortDirection="asc" 
                 matSortDisableClear width="100%">
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let row">
+                        <div class="btn-group">
+                            <!--<button class="btn btn-info">info</button>-->
+                            <button class="btn btn-primary" (click)="edit(row)">edit</button>
+                            <button class="btn btn-danger" (click)="delete(row)">delete</button>
+                        </div>
+                    </td>
+                </ng-container>
+
+
+
                 <ng-container matColumnDef="id">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> id </th>
                     <td mat-cell *matCellDef="let row"> {{ row.id }}</td>
@@ -68,16 +82,7 @@
                     <td mat-cell *matCellDef="let row"> {{ row.admin ? 'admin' : 'user' }}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="actions">
-                    <th mat-header-cell *matHeaderCellDef> Actions </th>
-                    <td mat-cell *matCellDef="let row">
-                        <div class="btn-group">
-                            <button class="btn btn-info">info</button>
-                            <button class="btn btn-primary" (click)="edit(row)">edit</button>
-                            <button class="btn btn-danger" (click)="delete(row)">delete</button>
-                        </div>
-                    </td>
-                </ng-container>
+             
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;">

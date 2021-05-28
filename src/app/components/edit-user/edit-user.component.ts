@@ -13,8 +13,9 @@ export class EditUserComponent implements OnInit {
 
 
   userForm!: FormGroup;
-  firstnameCtl!: FormControl;
+  firstnameCtl!:FormControl;
   lastnameCtl!:FormControl;
+  birth_dateCtl!: FormControl;
   number_streetCtl!:FormControl;
   streetCtl!:FormControl;
   zipcodeCtl!:FormControl;
@@ -43,6 +44,7 @@ initForm(): void
 
     this.firstnameCtl = this.formBuilder.control ('');
     this.lastnameCtl = this.formBuilder.control('');
+    this.birth_dateCtl = this.formBuilder.control('');
     this.genderCtl = this.formBuilder.control('');
     this.phone_numberCtl = this.formBuilder.control('');
     this.streetCtl = this.formBuilder.control('');
@@ -59,6 +61,7 @@ initForm(): void
     this.userForm = this.formBuilder.group({
       firstname: this.firstnameCtl,
       lastname: this.lastnameCtl,
+      birth_date: this.birth_dateCtl,
       email: this.emailCtl,
       gender: this.genderCtl,
       phone_number: this.phone_numberCtl,
@@ -77,6 +80,7 @@ initForm(): void
      
      
     });
+    this.userForm.patchValue(this.data);
 
 }
 
