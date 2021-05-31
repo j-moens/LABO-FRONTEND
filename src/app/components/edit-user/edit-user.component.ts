@@ -4,6 +4,7 @@ import{FormBuilder, FormControl, FormGroup, NgForm, ValidatorFn, Validators, Abs
 import { UsersCommonService } from 'src/app/services/users-common.service';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AuthService } from 'src/app/services/auth.service';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-edit-user',
@@ -51,6 +52,7 @@ initForm(): void
     this.firstnameCtl = this.formBuilder.control ('');
     this.lastnameCtl = this.formBuilder.control('');
     this.birth_dateCtl = this.formBuilder.control(new Date());
+
     this.genderCtl = this.formBuilder.control(["H", "F", "X"]);
     this.phone_numberCtl = this.formBuilder.control('');
     this.streetCtl = this.formBuilder.control('');

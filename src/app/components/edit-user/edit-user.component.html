@@ -36,16 +36,16 @@
              <!--edit birthdate-->
 
              <div class="form">
-                <mat-form-field>
-                    <input matInput [matDatepicker]="picker" id="birth_date" class="form-control" placeholder="tell me your birthdate" 
+                <mat-form-field appearance="fill">
+                    <mat-label>Give me your birthdate</mat-label>
+                    <input matInput [matDatepicker]="picker" id="birth_date" class="form-control"
                     [formControl]="birth_dateCtl"> 
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                        
                 </mat-form-field>
             </div>
-
-
+          
 
             <!--edit gender-->
 
