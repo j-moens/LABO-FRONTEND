@@ -12,7 +12,7 @@ import { User } from '../models/user.model';
   providedIn: 'root'
 })
 export class ServerService {
-  private BASE_URL='http://localhost:8000/api/';
+  private BASE_URL='https://localhost:8000/api/';
 
 
  /**
@@ -38,14 +38,6 @@ export class ServerService {
   }
 
 
-/*   public post(url:string, body:any)
-  {
-
-    return this.http.post(this.BASE_URL+url, JSON.stringify(body),{headers : new HttpHeaders({ 'Content-Type': 'application/json' })}
-    ).subscribe(data => {
-      console.log(data);
-    });;
-  } */
 
   public post<T>(url:string, body:T, secure: boolean = true): Observable<any>
   {

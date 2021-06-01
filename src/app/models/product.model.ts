@@ -7,6 +7,7 @@ export class Product
     price: number;
     fk_model : number;
    
+   
 
     constructor(data: any)
     {
@@ -16,7 +17,7 @@ export class Product
         this.description = data.description;
         this.price = data.price;
         this.fk_model = data.fk_model;
-       
+     
       
     }
 }

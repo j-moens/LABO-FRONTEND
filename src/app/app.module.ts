@@ -34,11 +34,7 @@ import { MatTableModule } from "@angular/material/table";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatStepperModule } from "@angular/material/stepper";
 
-
-
 //
-
-
 import {HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -99,6 +95,7 @@ export function tokenGetter() {
        MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatRadioModule,
        MatTabsModule,MatDatepickerModule, MatNativeDateModule,
        //
+       
     JwtModule.forRoot({
       config: {
           tokenGetter: tokenGetter,
@@ -118,6 +115,7 @@ export function tokenGetter() {
     AuthGuard,
     AdminGuard, 
     MatDatepickerModule,
+
 
 
   ],
