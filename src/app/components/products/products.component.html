@@ -4,11 +4,13 @@
             <tr>
                <!--<th scope="col">id</th>--> 
                 <!--th scope="col">reference</th>-->
+                <th scope="col">Marque</th>
+                <th scope="col">modèle</th>
                 <th scope="col">name</th>
                 <th scope="col">description</th>
                 <th scope="col">price</th>
-                <th scope="col">modèle</th>
-                <th scope="col">Marque</th>
+              
+                
                 
                 
             </tr>
@@ -17,12 +19,13 @@
          <tr *ngFor="let product of productsList">
             <!--<td>{{product.id}}</td>--> 
              <!--<td>{{product.reference}}</td>-->
-
-             <td>{{product.product.name}}</td>
+             <td>{{product.brand.name}}</td>
+             <td>{{product.model.name}}</td>
+             <td>{{product.product.name}} <button class="btn btn-primary" (click)="seeDetails(product.product)" >See details</button></td>
              <td>{{product.product.description}}</td>
              <td>{{product.product.price}}</td>
-             <td>{{product.model.name}}</td>
-              <td>{{product.brand.name}}</td> 
+             
+               
 
             
         </tr>

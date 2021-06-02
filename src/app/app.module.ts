@@ -64,6 +64,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChangePasswordComponent } from './components/change-password/change-password.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { MatNativeDateModule } from "@angular/material/core";
+import { DetailsPhoneComponent } from './components/details-phone/details-phone.component';
 
 
 export function tokenGetter() {
@@ -82,6 +83,7 @@ export function tokenGetter() {
     ProductsComponent,
     ChangePasswordComponent,
     EditUserComponent,
+    DetailsPhoneComponent,
   ],
   imports: [
     BrowserModule,

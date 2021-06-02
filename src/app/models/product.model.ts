@@ -1,5 +1,6 @@
 export class Product
 {
+    
     id: number;
     reference:number;
     name: string;

@@ -6,9 +6,12 @@ import {ModelService} from '../../services/model.service';
 import{BrandService} from'../../services/brand.service';
 import { Model } from 'src/app/models/model.model';
 import{Brand} from 'src/app/models/brand.model'
-import { subscribeOn } from 'rxjs/operators';
+import { DetailsPhoneComponent } from '../details-phone/details-phone.component';
+import { MatDialog } from '@angular/material/dialog';
+import { EditUserComponent } from '../edit-user/edit-user.component';
+import { DetailsPhone } from 'src/app/models/details_phone.model';
 
-// classe productmodel : pour afficher le nom des modèles
+// classe productmodel : pour afficher le nom des modèles + marques
 class ProductModel
 {
   public product: Product; 
@@ -23,10 +26,6 @@ class ProductModel
   }
 }
 
-
-
-
-
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -35,9 +34,8 @@ class ProductModel
 export class ProductsComponent implements OnInit {
   public productsList: ProductModel[]  = [];
 
-
-
-  constructor(private productsService: ProductsService, private modelService: ModelService, private brandService : BrandService, private router: Router) { }
+  constructor(private productsService: ProductsService, private modelService: ModelService, private brandService : BrandService, 
+              private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   
@@ -66,10 +64,19 @@ export class ProductsComponent implements OnInit {
                   }
                 }
             )
-              })
+              }
+          )
 
        })
       //console.log(this.productsList)      
+     }
+
+     seeDetails(product : Product)
+     {
+
+      const dlg=this.dialog.open(DetailsPhoneComponent, { data : product}); // la fonction seeDetails renvoie vers le composant DetailsPhone (voir suite plus bas)
+                                                // en utlisant mat Dialog, qui peermet d'ouvrir le composant (voir suite plus bas)
+                                                // dans une petite fenêtre
      }
      
 }

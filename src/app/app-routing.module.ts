@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './components/auth/auth.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
+import { DetailsPhoneComponent } from './components/details-phone/details-phone.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { FourhofourComponent } from './components/fourhofour/fourhofour.component';
 import { MainComponent } from './components/main/main.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
    {path: 'create-user', component: CreateUserComponent},
    //{path: 'users', component: UsersComponent},
    {path: 'products', component: ProductsComponent},
+   {path: 'details_phone', component: DetailsPhoneComponent},
 
 
 
