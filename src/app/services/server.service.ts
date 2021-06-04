@@ -31,7 +31,6 @@ export class ServerService {
       return this.call(() => this.http.get(this.BASE_URL + url));
     } else
     {
-      console.log('else');
       return this.http.get(this.BASE_URL + url);
     }
    

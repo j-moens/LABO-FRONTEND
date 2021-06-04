@@ -8,8 +8,10 @@ import { Model } from 'src/app/models/model.model';
 import{Brand} from 'src/app/models/brand.model'
 import { DetailsPhoneComponent } from '../details-phone/details-phone.component';
 import { MatDialog } from '@angular/material/dialog';
-import { EditUserComponent } from '../edit-user/edit-user.component';
-import { DetailsPhone } from 'src/app/models/details_phone.model';
+
+import { BasketComponent } from '../basket/basket.component';
+
+
 
 // classe productmodel : pour afficher le nom des modèles + marques
 class ProductModel
@@ -70,7 +72,8 @@ export class ProductsComponent implements OnInit {
        })
       //console.log(this.productsList)      
      }
-
+      
+     // Fonction seeDetails : utilisée pour voir les détails des produits
      seeDetails(product : Product)
      {
 
@@ -78,5 +81,21 @@ export class ProductsComponent implements OnInit {
                                                 // en utlisant mat Dialog, qui peermet d'ouvrir le composant (voir suite plus bas)
                                                 // dans une petite fenêtre
      }
+
+     //Panier d'achat (basket)
+ 
+
+     addToBasket(product : Product)
+     {
+      // on doit aller checher les produits pour les rajouter au panier (via session storage ????) 
+      //puis les mettre dans une liste et afficher cette liste sur la page basket....
+
+      sessionStorage.setItem('id', '');   // localStorage.setItem('id', noOfClicks);
+
+      sessionStorage.setItem('basket', JSON.stringify(product)); 
+
+      
+     }
+     
      
 }

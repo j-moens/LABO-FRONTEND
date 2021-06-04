@@ -23,7 +23,7 @@
              <td>{{product.model.name}}</td>
              <td>{{product.product.name}} <button class="btn btn-primary" (click)="seeDetails(product.product)" >See details</button></td>
              <td>{{product.product.description}}</td>
-             <td>{{product.product.price}}</td>
+             <td>{{product.product.price}} €</td>  <button class="btn btn-primary" (click)="addToBasket(product.product)" >Add to Basket</button>
              
                
 
@@ -35,5 +35,6 @@
     </table>
    
     </div>
-      
+
+
 

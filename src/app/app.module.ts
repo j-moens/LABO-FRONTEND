@@ -49,10 +49,9 @@ import { FourhofourComponent } from './components/fourhofour/fourhofour.componen
 import { MainComponent } from './components/main/main.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProductsComponent } from './components/products/products.component';
+
+
 import { AdminGuard, AuthGuard } from './services/auth-guard.service';
-
-
-
 import { UsersService } from './services/users.service';
 import { ServerService } from './services/server.service';
 import { AuthService } from './services/auth.service';
@@ -65,6 +64,9 @@ import { ChangePasswordComponent } from './components/change-password/change-pas
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { MatNativeDateModule } from "@angular/material/core";
 import { DetailsPhoneComponent } from './components/details-phone/details-phone.component';
+import { BasketComponent } from './components/basket/basket.component';
+
+
 
 
 export function tokenGetter() {
@@ -84,6 +86,7 @@ export function tokenGetter() {
     ChangePasswordComponent,
     EditUserComponent,
     DetailsPhoneComponent,
+    BasketComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,13 +94,14 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
+  
        // material
        MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatListModule,
        MatTableModule, MatPaginatorModule, MatSortModule, MatIconModule,
        MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatRadioModule,
        MatTabsModule,MatDatepickerModule, MatNativeDateModule,
        //
-       
+     
     JwtModule.forRoot({
       config: {
           tokenGetter: tokenGetter,
@@ -117,7 +121,7 @@ export function tokenGetter() {
     AuthGuard,
     AdminGuard, 
     MatDatepickerModule,
-
+    
 
 
   ],
