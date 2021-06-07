@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import {Basket} from 'src/app/models/basket.model'
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { BasketService } from 'src/app/services/basket.service';
-import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-basket',
@@ -10,31 +9,17 @@ import { Router } from '@angular/router';
 })
 export class BasketComponent implements OnInit {
 
-  public basket: Basket = new Basket({}) ; // on lui passe le modèle
+  items = this.basketService.getItems();
 
-
-
-  constructor(private basketService : BasketService, private router: Router)
-             
-              
+  constructor(private basketService : BasketService)     
                
   { 
-    this.basketService.getOneById (this.basket.id).subscribe(basket=>
-    {
-      if(basket)
-      {
-        this.basket= basket; 
-      }
-                  
-    }) 
+
   }
 
   ngOnInit(): void {
 
-   
-
-  }  
 
 }
 
-
+}

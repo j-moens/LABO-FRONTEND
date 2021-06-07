@@ -121,9 +121,6 @@ export function tokenGetter() {
     AuthGuard,
     AdminGuard, 
     MatDatepickerModule,
-    
-
-
   ],
   bootstrap: [AppComponent]
 })

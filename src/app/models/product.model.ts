@@ -8,6 +8,7 @@ export class Product
     price: number;
     fk_model : number;
     fk_brand: number;
+    
    
    
 
@@ -20,7 +21,6 @@ export class Product
         this.price = data.price;
         this.fk_model = data.fk_model;
         this.fk_brand = data.fk_brand;
-     
       
     }
 }

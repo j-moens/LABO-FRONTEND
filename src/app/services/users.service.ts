@@ -13,15 +13,10 @@ export class UsersService {
 
   constructor(private server: ServerService, private router : Router) { 
     
-  }
+    }
 
       addUsers(body: User):Observable <User[]>
       {
-
-          
-        // this.server.post('movies/actors/create/',body);
-        // this.router.navigate(['actors']).then(()=>location.reload());
-
 
         return this.server.post<User>('users/create/',body).pipe(
           map(res=> res.map((m: any) =>new User(m))),
@@ -31,10 +26,7 @@ export class UsersService {
              return[];
            } )
         );
-       
-
-    
-  }
+      }
 
    
 

@@ -4,13 +4,11 @@ import { Product } from 'src/app/models/product.model';
 import{ProductsService} from'../../services/products.service';
 import {ModelService} from '../../services/model.service';
 import{BrandService} from'../../services/brand.service';
+import {BasketService} from '../../services/basket.service';
 import { Model } from 'src/app/models/model.model';
 import{Brand} from 'src/app/models/brand.model'
 import { DetailsPhoneComponent } from '../details-phone/details-phone.component';
 import { MatDialog } from '@angular/material/dialog';
-
-import { BasketComponent } from '../basket/basket.component';
-
 
 
 // classe productmodel : pour afficher le nom des modèles + marques
@@ -37,11 +35,13 @@ export class ProductsComponent implements OnInit {
   public productsList: ProductModel[]  = [];
 
   constructor(private productsService: ProductsService, private modelService: ModelService, private brandService : BrandService, 
-              private router: Router, public dialog: MatDialog) { }
+              private router: Router, public dialog: MatDialog, private BasketService : BasketService) { }
+
+  
 
   ngOnInit(): void {
   
-     this.productsService.getAll().subscribe(products =>
+    this.productsService.getAll().subscribe(products =>
       {
          products.forEach
 
@@ -89,10 +89,9 @@ export class ProductsComponent implements OnInit {
      {
       // on doit aller checher les produits pour les rajouter au panier (via session storage ????) 
       //puis les mettre dans une liste et afficher cette liste sur la page basket....
-
-      sessionStorage.setItem('id', '');   // localStorage.setItem('id', noOfClicks);
-
-      sessionStorage.setItem('basket', JSON.stringify(product)); 
+      this.BasketService.addToBasket(product) ; 
+      window.alert('Your product has been added to the cart!');
+      //sessionStorage.setItem('basket', JSON.stringify(product)); 
 
       
      }
