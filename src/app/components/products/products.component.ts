@@ -11,6 +11,7 @@ import { DetailsPhoneComponent } from '../details-phone/details-phone.component'
 import { MatDialog } from '@angular/material/dialog';
 
 
+
 // classe productmodel : pour afficher le nom des modèles + marques
 class ProductModel
 {
@@ -32,6 +33,7 @@ class ProductModel
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
+ 
   public productsList: ProductModel[]  = [];
 
   constructor(private productsService: ProductsService, private modelService: ModelService, private brandService : BrandService, 
@@ -83,18 +85,18 @@ export class ProductsComponent implements OnInit {
      }
 
      //Panier d'achat (basket)
- 
+    
 
      addToBasket(product : Product)
      {
       // on doit aller checher les produits pour les rajouter au panier (via session storage ????) 
       //puis les mettre dans une liste et afficher cette liste sur la page basket....
       this.BasketService.addToBasket(product) ; 
+  
       window.alert('Your product has been added to the cart!');
-      //sessionStorage.setItem('basket', JSON.stringify(product)); 
-
-      
-     }
      
+     }
+
+    
      
 }
