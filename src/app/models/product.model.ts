@@ -1,6 +1,5 @@
 export class Product
 {
-    
     id: number;
     reference:number;
     name: string;
@@ -8,10 +7,7 @@ export class Product
     price: number;
     fk_model : number;
     fk_brand: number;
-   
-    
-   
-   
+    qty:number = 1
 
     constructor(data: any)
     {

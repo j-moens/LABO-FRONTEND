@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BasketService } from 'src/app/services/basket.service';
+
 
 
 @Component({
@@ -19,6 +20,7 @@ export class BasketComponent implements OnInit {
   { 
     
   }
+
 
 
   ngOnInit(): void {

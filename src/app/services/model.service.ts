@@ -9,16 +9,8 @@ import{Router} from '@angular/router';
   providedIn: 'root'
 })
 export class ModelService {
+   constructor(private server: ServerService) { }
 
-  
-
-    constructor(private server: ServerService) { 
-        
-    }
-
-
-   
- 
     public getOneById(id: number): Observable<Model | null>
     {
         
@@ -38,11 +30,7 @@ export class ModelService {
             return[];
             } )
         );
-        
-       
-       
+
     }
-
-
 
 }
