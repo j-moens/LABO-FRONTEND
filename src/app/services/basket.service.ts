@@ -16,7 +16,7 @@ export class BasketItems {
   id : number; 
   product : Product ;
   quantity : number;
-  static quantity: number;
+  //static quantity: number;
 
   constructor (id: number, product : Product) {
     this.product = product ; 
@@ -32,30 +32,6 @@ export class BasketService {
     items: Product[] = [];
 
     addToBasket(product: Product) {
-    
-      /*
-      1 Object Basket contient le basketID de ta DB Contient un array de BAsketItem
-      1 Object BasketItem qui va contenir orderItemID produit et quantity
-
-      let basket = JSON.parse(localStorage.getItem("basket")|| "[]");
-          basket : BasketItem 
-          verifier que le basket ne contient pas deja le produit;
-          Si le produit se trouve dans le basket ->
-            basket[id].quantity += 1
-            --- basket.items[id].quantity += 1
-            --- basket.id qui servira pour update la DB
-            update l²item  dans la DB
-          Si le produit n²est pas deja dans le basket ->
-            basket.push(new BasketItem(product))
-            ajouter un item dans la DB
-
-      sauver le tout 
-
-      Si l²utilisateur est connecter alors ajouter le nouvel element ou update 
-
-      */
-
-
       /* ancien code, à garder pour souvenirs ;-) */
 
       //  let basket = JSON.parse(localStorage.getItem("basket")|| "[]");
@@ -76,13 +52,38 @@ export class BasketService {
          
     }
 
+
     getItems() {
       return JSON.parse(localStorage.getItem("basket")|| "[]");
 
     }
 
+    increase(product : Product) {
+      let basket = JSON.parse(localStorage.getItem("basket")|| "[]");
+      let existingItem = basket.find((x:Product) => x.id == product.id);
+      let idx = basket.indexOf(existingItem);
+      
+      basket[idx].qty++;
+     
+      localStorage.setItem('basket', JSON.stringify(basket));
+    }
 
+    decrease(product : Product) {
+      let basket = JSON.parse(localStorage.getItem("basket")|| "[]");
+      let existingItem = basket.find((x:Product) => x.id == product.id);
+      let idx = basket.indexOf(existingItem);
+      
+      basket[idx].qty--;
 
+      if (basket[idx].qty<1)
+        {
+         basket.splice(idx, 1); // on passe l'index du produit (idx) à la fonction slice
+        }
+      localStorage.setItem('basket', JSON.stringify(basket));
+
+    }
+
+   
 
 
   constructor(private http: HttpClient) { 

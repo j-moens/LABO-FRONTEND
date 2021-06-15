@@ -66,7 +66,7 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { DetailsPhoneComponent } from './components/details-phone/details-phone.component';
 import { BasketComponent } from './components/basket/basket.component';
 
-
+;
 
 
 
@@ -100,6 +100,7 @@ export function tokenGetter() {
     HttpClientModule,
     FormsModule, 
     ReactiveFormsModule,
+   
   
        // material
        MatButtonModule, MatCheckboxModule, MatFormFieldModule, MatInputModule, MatListModule,
@@ -107,7 +108,7 @@ export function tokenGetter() {
        MatSlideToggleModule, MatDialogModule, MatSnackBarModule, MatRadioModule,
        MatTabsModule,MatDatepickerModule, MatNativeDateModule,
        //
-     
+
     JwtModule.forRoot({
       config: {
           tokenGetter: tokenGetter,
