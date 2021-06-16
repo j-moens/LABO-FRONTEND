@@ -35,12 +35,11 @@ export class BasketComponent implements OnInit {
     this.items = this.basketService.getItems();
   }
 
-  getTotal(basket : BasketComponent)
-  {
-   this.items = this.items.price * this.items.qty;
-  
+  getTotal(){
+    return this.basketService.getTotal() ;
     
-    }
+  }
+
 
   confirmOrder()
   {}

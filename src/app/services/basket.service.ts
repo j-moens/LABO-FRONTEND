@@ -10,14 +10,13 @@ import{ map, catchError } from 'rxjs/operators';
 import{Router} from '@angular/router';
 import{HttpClient, HttpHeaders} from '@angular/common/http';
 import { BasketComponent } from '../components/basket/basket.component';
-import { OrderProducts } from '../models/order_products.model';
+
 
 export class BasketItems {
   id : number; 
   product : Product ;
   quantity : number;
-  //static quantity: number;
-
+  
   constructor (id: number, product : Product) {
     this.product = product ; 
     this.quantity = 1;
@@ -83,7 +82,18 @@ export class BasketService {
 
     }
 
-   
+    getTotal()
+    {
+      let basket = JSON.parse(localStorage.getItem("basket")|| "[]");
+      let total =0;
+      basket.forEach ((item : Product) =>
+        {
+          console.log(item);
+          total += item.qty * item.price;
+        }
+        )
+        return total ;
+    }
 
 
   constructor(private http: HttpClient) { 

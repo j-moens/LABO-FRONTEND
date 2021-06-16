@@ -22,9 +22,13 @@
                 <button (click)="increase(item)">Incrémenter (Plus)</button>
                 <button (click)="decrease(item)">Décrémenter (Moins)</button>
            </td>
-           <td>{{item.qty * item.price}}€ </td>       
+           <td>{{item.qty * item.price }} € </td> 
+          
+           
+           
       </tr>   
-      <div>Prix total de la commande :{{ getTotal(items) }}
+      <div>Prix total de la commande :{{ getTotal() }}  
+       
       </div>
      
       <button (click)="confirmOrder()">Confirmer la commande</button>
