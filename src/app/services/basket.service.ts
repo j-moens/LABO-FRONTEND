@@ -45,7 +45,7 @@ export class BasketService {
             let idx = basket.indexOf(existingItem); // on recherche son index
            
             if(idx!=-1){ basket[idx].qty++;}  //on incrémente la quantité
-          }else basket.push(product)  //si iln'existe pas : on le push
+          }else basket.push(product)  //si il n'existe pas : on le push
                
           localStorage.setItem('basket', JSON.stringify(basket)); // dans tous les cas, on enregistre dans le local sotrage
          
@@ -88,7 +88,6 @@ export class BasketService {
       let total =0;
       basket.forEach ((item : Product) =>
         {
-          console.log(item);
           total += item.qty * item.price;
         }
         )

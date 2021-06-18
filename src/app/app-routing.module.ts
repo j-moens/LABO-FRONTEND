@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthComponent } from './components/auth/auth.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 import { CreateUserComponent } from './components/create-user/create-user.component';
 import { DetailsPhoneComponent } from './components/details-phone/details-phone.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
@@ -22,16 +23,18 @@ const routes: Routes = [
    {path: 'products', component: ProductsComponent},
    {path: 'details_phone', component: DetailsPhoneComponent},
    {path: 'basket', component: BasketComponent},
+ 
 
 
 
    {path: 'home', component: MainComponent},
    {path : 'auth', component: AuthComponent},
 
-   { path: '', canActivate: [AuthGuard], children: [
+   { path: '', canActivate: [AuthGuard], children: [ // à partir d'ici, il faut être authentifié pour voir les pages grâce à l'auth guard
    
     { path: 'users/:id', component: ProfileComponent },
-    { path: '', canActivate: [AdminGuard], children: [
+    {path : 'confirm-order', component: ConfirmOrderComponent},
+    { path: '', canActivate: [AdminGuard], children: [ 
       { path: 'edit_user/:id', component: CreateUserComponent },
     ]},
   ]},

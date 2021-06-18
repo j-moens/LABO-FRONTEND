@@ -1,48 +1,29 @@
- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" routerLink="">
-      <img src={{title}}/>
-     
-    </a>
-    
-     <!-- <button class="navbar-toggler" type="button">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"> <img src={{title}}/></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>  -->
+    </button>
+    <!--pour les éléments à voir si on est pas authentifiés  (*ngIf check auth)-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <div class="btn-group">
+          <a class="btn btn-success nav-link" routerLink="products">Produits</a>     
+          <a class="btn btn-default nav-link" routerLink="users" *ngIf="checkAuth()">users</a>
+          <a class="btn btn-dark" (click)="profile()" *ngIf="checkAuth()">Profile</a> 
 
-  <!--permet de voir les users si on est authentifiés (*ngIf check auth)-->
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">
-      
-        <li class="nav-item" *ngIf="checkAuth()">
-          <a class="nav-link" routerLink="users">users</a>
-        </li>
-
-        <li class="nav-item" *ngIf="checkAuth()">
-          <a class="btn btn-dark" (click)="profile()">Profile</a>
-        </li>
-      </ul>
+          <a class="btn btn-primary nav-link" routerLink="create-user" *ngIf="!checkAuth()">Create account</a>
+          <a class="btn btn-success nav-link" routerLink="auth" *ngIf="!checkAuth()">Login</a>
+          <a class="btn btn-danger" (click)="logout()" *ngIf="checkAuth()">Logout</a>  
+               
+          <a class="btn btn-outline-danger nav-link justify-content-end" routerLink="basket">Basket</a>    
+        </div> 
+      </ul> 
     </div>
-
-   <!--pour les éléments à voir si on est pas authentifiés  (*ngIf check auth)-->
-    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item" *ngIf="!checkAuth()">
-          <div class="btn-group">
-            <a class="btn btn-success" routerLink="products">Produits</a>
-            <a class="btn btn-primary" routerLink="create-user">Create account</a>
-            <a class="btn btn-success" routerLink="auth">Login</a>
-            <a class="btn btn-outline-danger" routerLink="basket">Basket</a>
-            
-            
-          </div>
-
-          <!--permet de voir le logout si on est authentifiés (*ngIf check auth)-->
-        </li>  
-        <li class="nav-item" *ngIf="checkAuth()">
-          <a class="btn btn-danger" (click)="logout()">Logout</a>
-        </li>
-      </ul>
   </div>
 </nav>
+
+
 
 
 <div class='container-fluid center_div'>

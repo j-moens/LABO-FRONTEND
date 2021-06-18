@@ -1,0 +1,45 @@
+<h2>Résumé de la commande</h2>
+
+<div class="responsive-table"> 
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Prix par unité</th>
+                <th scope="col">Quantité</th>
+                <th scope="col">Prix total </th>
+               
+            </tr>
+            
+        </thead>
+        <tbody>
+      
+         <tr *ngFor="let item of items">
+             <td>{{item.name}}</td>
+             <td>{{item.price}}€</td>
+             <td>{{item.qty}} </td>
+            <td>{{item.qty * item.price }} € </td> 
+
+       </tr>  
+
+       <div><b>Prix total de la commande : {{ getTotal() }} €</b> 
+        <br /><br/>
+       
+       <div><b>Choississez votre mode de livraison : </b>
+            
+            <input type= "radio" name="r1" value="normal" (change)="getTotal1('normal')" checked > tarif normal : 15 €
+            <input type= "radio" name="r1" value="express" (change)="getTotal1('express')"> tarif express : 50 € <br/>
+
+        </div>
+        <br />
+
+        <div><b>Prix total de la commande avec les frais de livraison : {{ total }} €</b> 
+
+      
+
+        
+        
+       </div>
+
+
+

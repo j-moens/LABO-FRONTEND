@@ -65,6 +65,7 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { MatNativeDateModule } from "@angular/material/core";
 import { DetailsPhoneComponent } from './components/details-phone/details-phone.component';
 import { BasketComponent } from './components/basket/basket.component';
+import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 
 ;
 
@@ -90,6 +91,7 @@ export function tokenGetter() {
     EditUserComponent,
     DetailsPhoneComponent,
     BasketComponent,
+    ConfirmOrderComponent,
   
 
  
