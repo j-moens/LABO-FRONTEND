@@ -9,6 +9,7 @@ import { Model } from 'src/app/models/model.model';
 import{Brand} from 'src/app/models/brand.model'
 import { DetailsPhoneComponent } from '../details-phone/details-phone.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 
 
@@ -25,6 +26,8 @@ class ProductModel
     this.model = model;
     this.brand = brand;
   }
+
+
 }
 
 @Component({
@@ -35,6 +38,9 @@ class ProductModel
 export class ProductsComponent implements OnInit {
  
   public productsList: ProductModel[]  = [];
+  
+  
+
 
   constructor(private productsService: ProductsService, private modelService: ModelService, private brandService : BrandService, 
               private router: Router, public dialog: MatDialog, private BasketService : BasketService) { }
@@ -59,7 +65,7 @@ export class ProductsComponent implements OnInit {
                     
                       if (model && brand){
                         this.productsList.push (new ProductModel(p, model, brand))
-                       // console.log(this.productsList)
+                        //console.log(this.productsList)
                       }
                     })          
                   }else
@@ -72,7 +78,7 @@ export class ProductsComponent implements OnInit {
           )
 
        })
-      //console.log(this.productsList)      
+  
      }
       
      // Fonction seeDetails : utilisée pour voir les détails des produits
@@ -85,17 +91,16 @@ export class ProductsComponent implements OnInit {
      }
 
      //Panier d'achat (basket)
-    
-
      addToBasket(product : Product)
      {
-      // on doit aller checher les produits pour les rajouter au panier (via session storage ????) 
-      //puis les mettre dans une liste et afficher cette liste sur la page basket....
+
       this.BasketService.addToBasket(product) ; 
   
       window.alert('Your product has been added to the cart!');
      
      }
+
+
 
     
      

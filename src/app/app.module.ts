@@ -66,8 +66,8 @@ import { MatNativeDateModule } from "@angular/material/core";
 import { DetailsPhoneComponent } from './components/details-phone/details-phone.component';
 import { BasketComponent } from './components/basket/basket.component';
 import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
+import { SafeHtmlPipe } from "./pipes/safeurl.pipe";
 
-;
 
 
 
@@ -92,7 +92,7 @@ export function tokenGetter() {
     DetailsPhoneComponent,
     BasketComponent,
     ConfirmOrderComponent,
-  
+    SafeHtmlPipe
 
  
   ],

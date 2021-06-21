@@ -1,9 +1,11 @@
 <div class="responsive-table tab"> 
+    
     <table class="table">
         <thead>
             <tr>
                 <!--<th scope="col">id</th>--> 
                 <!--th scope="col">reference</th>-->
+                <th scope="col"></th>
                 <th scope="col">Marque</th>
                 <th scope="col">modèle</th>
                 <th scope="col">name</th>
@@ -13,26 +15,21 @@
             </tr>
         </thead>
         
-        <tbody>
-           
-         <tr *ngFor="let product of productsList">
-             <td>{{product.brand.name}}</td>
-             <td>{{product.model.name}}</td>
-             <td>{{product.product.name}} <button class="btn btn-primary" (click)="seeDetails(product.product)" >See details</button></td>
-             <td>{{product.product.description}}</td>
-             <td>{{product.product.price}} € <button class="btn btn-primary" (click)="addToBasket(product.product)">Add to Basket</button></td>
-             <td></td>
-             
-               
-
-            
-        </tr>
+        <tbody>  
+            <tr *ngFor="let product of productsList">
+                <td><img [src]="product.product.photo | safeHtml"/></td>
+                <td>{{product.brand.name}}</td>
+                <td>{{product.model.name}}</td>
+                <td>{{product.product.name}} <button class="btn btn-primary" (click)="seeDetails(product.product)" >See details</button></td>
+                <td>{{product.product.description}}</td>
+                <td>{{product.product.price}} € <button class="btn btn-primary" (click)="addToBasket(product.product)">Add to Basket</button></td>    
+            </tr>
      
      
-    </tbody>
+        </tbody>
     </table>
    
-    </div>
+</div>
 
 
 
