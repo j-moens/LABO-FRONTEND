@@ -9,6 +9,7 @@ export class Product
     fk_brand: number;
     qty:number = 1;
     photo:string;
+
    
 
     constructor(data: any)

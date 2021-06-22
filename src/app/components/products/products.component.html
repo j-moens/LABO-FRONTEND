@@ -17,7 +17,7 @@
         
         <tbody>  
             <tr *ngFor="let product of productsList">
-                <td><img [src]="product.product.photo | safeHtml"/></td>
+                <td><img [src]="product.product.photo | safeHtml" (click)="show(product.product.photo)"/></td>
                 <td>{{product.brand.name}}</td>
                 <td>{{product.model.name}}</td>
                 <td>{{product.product.name}} <button class="btn btn-primary" (click)="seeDetails(product.product)" >See details</button></td>
@@ -25,7 +25,23 @@
                 <td>{{product.product.price}} € <button class="btn btn-primary" (click)="addToBasket(product.product)">Add to Basket</button></td>    
             </tr>
      
-     
+            <!-- Modal : utilisé pour agrandir l'image au click -->
+            <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title" id="myModalLabel">Image preview</h4>
+                    </div>
+                    <div class="modal-body">
+                       <img [src]="imgModal  | safeHtml" id="imagepreview" style="width: 425px; height: 425px;" > <!-- <img [src]="imgModal : source du tableau d'image -->
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal" (click) = "hide()">Close</button>
+                    </div>
+                  </div>
+                </div>
+                </div>
+
         </tbody>
     </table>
    

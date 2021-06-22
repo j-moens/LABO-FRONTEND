@@ -8,8 +8,8 @@ import {BasketService} from '../../services/basket.service';
 import { Model } from 'src/app/models/model.model';
 import{Brand} from 'src/app/models/brand.model'
 import { DetailsPhoneComponent } from '../details-phone/details-phone.component';
-import { MatDialog } from '@angular/material/dialog';
-import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { MatDialog} from '@angular/material/dialog';
+
 
 
 
@@ -38,12 +38,14 @@ class ProductModel
 export class ProductsComponent implements OnInit {
  
   public productsList: ProductModel[]  = [];
-  
+  showModal: boolean = false; // utilisé pour Modal : booléen qui dit que le modal (agrandissement d'image au click) est à false par défaut
+  imgModal : string = ''; // utilisé pour préciser que variable imlgModal est un string pour les images
   
 
 
   constructor(private productsService: ProductsService, private modelService: ModelService, private brandService : BrandService, 
-              private router: Router, public dialog: MatDialog, private BasketService : BasketService) { }
+              private router: Router, public dialog: MatDialog, private BasketService : BasketService)
+              { }
 
   
 
@@ -101,7 +103,19 @@ export class ProductsComponent implements OnInit {
      }
 
 
-
+     show(img : string)
+     {
+       this.showModal = true; // Show-Hide Modal Check
+       this.imgModal =img;
+       
+     }
+     //Bootstrap Modal Close event
+     hide()
+     {
+       this.showModal = false;
+     }
     
+    
+
      
 }
