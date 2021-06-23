@@ -1,4 +1,4 @@
-<h2>Résumé de la commande</h2>
+<p>order works!</p>
 
 <div class="responsive-table"> 
     <table class="table">
@@ -24,24 +24,9 @@
 
        <div><b>Prix total de la commande : {{ getTotal() }} €</b> 
         <br /><br/>
-       
-       <div><b>Choississez votre mode de livraison : </b>
-            
-            <input type= "radio" name="r1" value="normal" (change)="getTotal1('normal')" checked > tarif normal : 15 €
-            <input type= "radio" name="r1" value="express" (change)="getTotal1('express')"> tarif express : 50 € <br/>
+        <b>Mode de livraison choisi : {{choice()}} </b><br/>
+        <b>Total de la commande : {{totalOrder()}}</b>
 
         </div>
-        <br />
 
-        <div><b>Prix total de la commande avec les frais de livraison : {{ total }} €</b> 
-
-        <div>
-            <button (click)="confirmorder()">Commander</button>
-        </div>
-
-        
-        
-       </div>
-
-
-
+        <button class="btn btn-primary" (click)="Confirm()" >Confirmer (supprime le panier)</button>

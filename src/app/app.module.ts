@@ -67,6 +67,7 @@ import { DetailsPhoneComponent } from './components/details-phone/details-phone.
 import { BasketComponent } from './components/basket/basket.component';
 import { ConfirmOrderComponent } from './components/confirm-order/confirm-order.component';
 import { SafeHtmlPipe } from "./pipes/safeurl.pipe";
+import { OrderComponent } from './components/order/order.component';
 
 
 
@@ -92,7 +93,8 @@ export function tokenGetter() {
     DetailsPhoneComponent,
     BasketComponent,
     ConfirmOrderComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    OrderComponent
 
  
   ],

@@ -8,6 +8,7 @@ import { DetailsPhoneComponent } from './components/details-phone/details-phone.
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { FourhofourComponent } from './components/fourhofour/fourhofour.component';
 import { MainComponent } from './components/main/main.component';
+import { OrderComponent } from './components/order/order.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import{UsersComponent} from './components/users/users.component'
@@ -34,6 +35,7 @@ const routes: Routes = [
    
     { path: 'users/:id', component: ProfileComponent },
     {path : 'confirm-order', component: ConfirmOrderComponent},
+    {path : 'order', component: OrderComponent},
     { path: '', canActivate: [AdminGuard], children: [ 
       { path: 'edit_user/:id', component: CreateUserComponent },
     ]},
