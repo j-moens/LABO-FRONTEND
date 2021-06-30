@@ -9,6 +9,7 @@ export class Product
     fk_brand: number;
     qty:number = 1;
     photo:string;
+    stock : number;
 
    
 
@@ -22,6 +23,7 @@ export class Product
         this.fk_model = data.fk_model;
         this.fk_brand = data.fk_brand;
         this.photo = data.img;
+        this.stock = data.stock;
 
     }
    

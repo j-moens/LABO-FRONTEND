@@ -5,6 +5,7 @@ export class OrderProducts
     fk_products : number;
     quantity : number;
     
+    
 
     constructor(data: any)
     {

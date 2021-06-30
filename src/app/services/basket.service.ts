@@ -76,7 +76,7 @@ export class BasketService {
 
       if (basket[idx].qty<1)
         {
-         basket.splice(idx, 1); // on passe l'index du produit (idx) à la fonction slice
+         basket.splice(idx, 1); // on passe l'index du produit (idx) à la fonction splice
         }
       localStorage.setItem('basket', JSON.stringify(basket));
 
